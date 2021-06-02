@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/mdb.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}"> {% endcomment %}
+     <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}"> 
     {% comment %} <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"> {% endcomment %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
     
@@ -25,9 +25,20 @@
     {% include 'prediction/nav.html' %}
 
 		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3">
-
-            <h1>Hi</h1>
-
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <form action="Practice 2 form.html" class="form">
+  <h1>Fraud Detection</h1>
+  <h4>To Predict if the medicine is fraud or not</h4>
+  <input placeholder="First name" type="text">
+  <input placeholder="Middle name" type="text">
+  <input placeholder="Last name" type="text">
+  <input placeholder="Email" type="email">
+  <input placeholder="Phone number" type="number">
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+</form>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    {% include 'prediction/footer.html' %}
 		</main>
 	
   
