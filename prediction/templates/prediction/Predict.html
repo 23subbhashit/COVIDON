@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mdb.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+     <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}"> 
+    {% comment %} <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"> {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+    
+     
+     
+     
+     {% comment %} <link rel="icon" type = "image/png" href = "{% static 'images/school.svg' %}"> {% endcomment %}
+  
+      <link rel="icon" type = "image/png" href = "{% static 'images/analysis.svg' %}"> 
+    <title>Fraud Detection</title>
+</head>
+
+<body >
+
+    {% include 'prediction/nav.html' %}
+
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3">
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <form action="{% url 'PredictionResult' %}" class="form">
+            {% csrf_token %}
+            <h1>Fraud Detection</h1>
+            <h4>To Predict if the medicine is fraud or not</h4>
+            <input placeholder="Age" type="text" name='Age'>
+            <input placeholder="Sex" type="text" name='Sex'>
+            <input placeholder="BP" type="text" name='BP'>
+            <input placeholder="Cholestrol" type="text" name="Cholestrol">
+            <input placeholder="Na_to_k" type="text" name='Na_to_k'>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+</form>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    {% include 'prediction/footer.html' %}
+		</main>
+	
+  
+<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/all.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/mdb.min.js' %}"></script>
+ <script>
+$(window).scroll(function(){
+    $('nav').toggleClass('scrolled', $(this).scrollTop() > 0);
+  });
+  
+    </script>
+</body>
+</html>
