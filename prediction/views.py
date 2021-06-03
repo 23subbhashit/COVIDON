@@ -6,12 +6,32 @@ import requests
 # Create your views here.
 def main(request):
     data = requests.get("https://covid19.mathdro.id/api/")
+    result1 = requests.get("https://coronavirus-19-api.herokuapp.com/countries").json()
+    d = dict()
+    for i in result1:
+        d[i['country']]=i['todayCases']
+    world = dict(sorted(d.items(), key=lambda item: item[1],reverse=True)[1:51])
+
+    country = []
+    cases = []
+    deaths = []
+    recovered =[]
+    todayDeaths = []
+
+    for i in result1:
+        if i['country'] in world.keys():
+            country.append(i['country'])
+            cases.append(i['cases'])
+            deaths.append(i['deaths'])
+            recovered.append(i['recovered'])
+            todayDeaths.append(i['todayDeaths'])
+    z = zip(country,cases,deaths,recovered,todayDeaths)
     result = data.json()
     confirmed = result['confirmed']['value']
     
     recovered = result['recovered']['value']
     deaths = result['deaths']['value']
-    return render(request,'prediction/main.html',{'confirmed' : confirmed, 'deaths' : deaths  ,'recovered' :recovered })
+    return render(request,'prediction/main.html',{'confirmed' : confirmed, 'deaths' : deaths  ,'recovered' :recovered , 'world' : z})
 
 def Predict(request):
     return render(request,'prediction/Predict.html')
