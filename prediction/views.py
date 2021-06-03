@@ -1,8 +1,17 @@
 from django.shortcuts import render
 import pickle
+import requests
+
+
 # Create your views here.
 def main(request):
-    return render(request,'prediction/main.html')
+    data = requests.get("https://covid19.mathdro.id/api/")
+    result = data.json()
+    confirmed = result['confirmed']['value']
+    
+    recovered = result['recovered']['value']
+    deaths = result['deaths']['value']
+    return render(request,'prediction/main.html',{'confirmed' : confirmed, 'deaths' : deaths  ,'recovered' :recovered })
 
 def Predict(request):
     return render(request,'prediction/Predict.html')
