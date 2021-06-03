@@ -6,3 +6,6 @@ def main(request):
 
 def Result(request):
     return render(request,'prediction/Result.html')
+
+def Detection(request):
+    return render(request,'prediction/Detection.html')
