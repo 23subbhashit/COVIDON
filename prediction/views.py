@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import pickle
 import requests
-
+from datetime import date
 
 # Create your views here.
 def main(request):
@@ -37,7 +37,9 @@ def Predict(request):
     return render(request,'prediction/Predict.html')
 
 def News(request):
-    data = requests.get("https://newsapi.org/v2/everything?q=covid&apiKey=cd6ba9fe4f644dc692dee61ce9c7718d")
+    today = date.today()
+    d3 = today.strftime("%y-%m-%d")
+    data = requests.get("https://newsapi.org/v2/everything?q=covid&from={}&sortBy=publishedAt&apiKey=cd6ba9fe4f644dc692dee61ce9c7718d".format(d3))
     res = data.json()
     res = res['articles']
     description = []
