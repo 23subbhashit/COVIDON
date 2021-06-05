@@ -42,10 +42,15 @@ def News(request):
     res = res['articles']
     description = []
     title = []
+    url=[]
+    publishedAt = []
     for i in res:
         description.append(i['urlToImage'])
         title.append(i['title'])
-    z = zip(description,title)
+        url.append(i['url'])
+        publishedAt.append(i['publishedAt'][:10])
+        
+    z = zip(description,title,url,publishedAt)
     return render(request,'prediction/News.html',{'world' : z})
 
 def Detection(request):

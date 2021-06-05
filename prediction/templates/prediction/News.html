@@ -35,7 +35,7 @@
     
   </div>
   <div class="row">
-    {% for des,title in world %}
+    {% for des,title,url,publishedAt in world %}
     <div class="col-md-4 p-3">
       <div class="d-flex align-items-start p-2 border" style="box-shadow: 0 0 10px #eee;">
         <img class="img-fluid mr-3" style="width: 110px;" src={{ des }} alt="">
@@ -50,9 +50,9 @@
                 <polygon points="142.994,142.995 83.148,142.995 83.148,157.995 157.994,157.995 157.994,43.883 142.994,43.883 		"></polygon>
               </g>
             </g></svg>
-            <small style="color: #9B5DE5;">6 min ago</small>
+            <small style="color: #9B5DE5;">{{ publishedAt }}</small>
           </div>
-          <small><a href="###"  style="font-weight: 600; line-height:1;color:white;">{{ title }}</a></small>
+          <small><a href= {{ url }}  style="font-weight: 600; line-height:1;color:white;">{{ title }}</a></small>
         </div>
       </div>
     </div>
