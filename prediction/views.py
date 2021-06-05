@@ -36,6 +36,18 @@ def main(request):
 def Predict(request):
     return render(request,'prediction/Predict.html')
 
+def News(request):
+    data = requests.get("https://newsapi.org/v2/everything?q=covid&apiKey=cd6ba9fe4f644dc692dee61ce9c7718d")
+    res = data.json()
+    res = res['articles']
+    description = []
+    title = []
+    for i in res:
+        description.append(i['urlToImage'])
+        title.append(i['title'])
+    z = zip(description,title)
+    return render(request,'prediction/News.html',{'world' : z})
+
 def Detection(request):
     return render(request,'prediction/Detection.html')
 

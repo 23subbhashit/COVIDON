@@ -1,0 +1,78 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mdb.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+    
+     
+     
+     
+     
+  
+      <link rel="icon" type = "image/png" href = "{% static 'images/analysis.svg' %}"> 
+    <title>Fraud Detection</title>
+</head>
+
+<body >
+
+    {% include 'prediction/nav.html' %}
+
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3">
+          <div class="container my-5">
+  <div class="border-bottom mb-3 pb-3 px-2 d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      {% comment %} <i class="fas fa-tachometer-alt " style="font-size:20px;color:#9B5DE5;"></i>   {% endcomment %}
+       <a href="#" style="color: #9B5DE5; font-size: 20px;" class="text-capitalize font-weight-bold mb-0">Covid News</a>
+    </div>
+    
+  </div>
+  <div class="row">
+    {% for des,title in world %}
+    <div class="col-md-4 p-3">
+      <div class="d-flex align-items-start p-2 border" style="box-shadow: 0 0 10px #eee;">
+        <img class="img-fluid mr-3" style="width: 110px;" src={{ des }} alt="">
+        <div>
+          <div class="d-flex align-items-center">
+            <svg height="10px" class="mr-1" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300.988 300.988" style="enable-background:new 0 0 300.988 300.988;" xml:space="preserve">
+            <g>
+              <g>
+                <path d="M150.494,0.001C67.511,0.001,0,67.512,0,150.495s67.511,150.493,150.494,150.493s150.494-67.511,150.494-150.493
+                  S233.476,0.001,150.494,0.001z M150.494,285.987C75.782,285.987,15,225.206,15,150.495S75.782,15.001,150.494,15.001
+                  s135.494,60.782,135.494,135.493S225.205,285.987,150.494,285.987z"></path>
+                <polygon points="142.994,142.995 83.148,142.995 83.148,157.995 157.994,157.995 157.994,43.883 142.994,43.883 		"></polygon>
+              </g>
+            </g></svg>
+            <small style="color: #9B5DE5;">6 min ago</small>
+          </div>
+          <small><a href="###"  style="font-weight: 600; line-height:1;color:white;">{{ title }}</a></small>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+    
+
+  </div>
+</div>
+		</main>
+	
+  
+<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/all.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/mdb.min.js' %}"></script>
+ <script>
+
+    </script>
+</body>
+</html>

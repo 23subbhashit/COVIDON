@@ -45,9 +45,10 @@
 <br/>
 <div class="form-style">
 <br/>
-<form>
+<form  action="{% url 'Detection' %}" method ="post" enctype="multipart/form-data">
   <div class="image-input">
-	<input type="file" accept="image/*" id="imageInput">
+  {% csrf_token %}
+	<input type="file" accept="image/*" id="imageInput" name="img">
 	<label for="imageInput" class="image-button"><i class="far fa-image"></i> Choose image</label>
 	<img src="" class="image-preview">
 	<span class="change-image">Choose different image</span>

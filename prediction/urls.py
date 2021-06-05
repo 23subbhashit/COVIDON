@@ -5,6 +5,7 @@ urlpatterns = [
     path('',views.main,name="main"),
     path('predict',views.Predict,name="Predict"),
     path('detection',views.Detection,name="Detection"),
-    path('predictionresult',views.PredictionResult,name="PredictionResult")
+    path('predictionresult',views.PredictionResult,name="PredictionResult"),
+    path('news',views.News,name="News")
     
 ]
