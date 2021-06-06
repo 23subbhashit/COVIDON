@@ -19,7 +19,7 @@ jmespath==0.10.0
 joblib==0.15.1
 jsonschema==3.2.0
 mysql-connector-python==8.0.21
-opencv-python==4.2.0.34
+opencv-python== 3.3.0.9
 pickleshare==0.7.5
 pandas==1.2.3
 requests==2.24.0
