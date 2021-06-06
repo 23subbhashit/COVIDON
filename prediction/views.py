@@ -39,7 +39,7 @@ def Predict(request):
 def News(request):
     today = date.today()
     d3 = today.strftime("%y-%m-%d")
-    data = requests.get("https://newsapi.org/v2/everything?q=covid&from={}&sortBy=publishedAt&apiKey=cd6ba9fe4f644dc692dee61ce9c7718d".format(d3))
+    data = requests.get("https://newsapi.org/v2/everything?q=covid-cases&from={}&pageSize=100&sortBy=publishedAt&apiKey=cd6ba9fe4f644dc692dee61ce9c7718d".format(d3))
     res = data.json()
     res = res['articles']
     description = []
@@ -47,10 +47,13 @@ def News(request):
     url=[]
     publishedAt = []
     for i in res:
-        description.append(i['urlToImage'])
-        title.append(i['title'])
-        url.append(i['url'])
-        publishedAt.append(i['publishedAt'][:10])
+        if i['urlToImage']==None:
+            continue
+        else:
+            description.append(i['urlToImage'])
+            title.append(i['title'])
+            url.append(i['url'])
+            publishedAt.append(i['publishedAt'][:10])
         
     z = zip(description,title,url,publishedAt)
     return render(request,'prediction/News.html',{'world' : z})
