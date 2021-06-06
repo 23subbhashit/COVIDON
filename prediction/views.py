@@ -2,6 +2,7 @@ from django.shortcuts import render
 import pickle
 import requests
 from datetime import date
+import pandas as pd
 
 # Create your views here.
 def main(request):
@@ -62,21 +63,22 @@ def Detection(request):
     return render(request,'prediction/Detection.html')
 
 def PredictionResult(request):
-    pkl_path = "Drug.pkl"
+    pkl_path = "Symptom.pkl"
     with open(pkl_path, 'rb') as f:
         model = pickle.load(f)
-    Sex = { 'F' : 0 , 'M' :1 }
-    BP = { 'HIGH' : 0 , 'LOW' : 1 ,'NORMAL' : 2 }
-    Cholestrol = { 'HIGH' : 0 , 'LOW' : 1 ,'NORMAL' : 2 }
-    Drug = {0 :'DrugY', 2 : 'drugX', 3 : 'drugA', 1 : 'drugC', 4 : 'drugB'}
+    Cough = { 'Yes' : 1 , 'No' :0 }
+    Fever = { 'Male' : 1 , 'Female' : 0 }
+    Drug = { 0 : 'Negative' , 2 : 'Positive' , 1 :'Other' }
     l=[]
-    l.append(request.GET['Age'])
-    l.append(Sex[request.GET['Sex']])
-    l.append(BP[request.GET['BP']])
-    l.append(Cholestrol[request.GET.get('Cholestrol', '')])
-    l.append(float(request.GET['Na_to_k']))
-    
-    res=model.predict([l])[0]
+    l.append(Cough[request.GET['Age']])
+    l.append(Cough[request.GET['Sex']])
+    l.append(Cough[request.GET['BP']])
+    l.append(Cough[request.GET.get('Cholestrol', '')])
+    l.append(Cough[(request.GET['Na_to_k'])])
+    l.append(Fever[(request.GET['Gender'])])
+    print(l)
+    test2= pd.DataFrame([l],columns= ['cough', 'fever', 'sore_throat', 'shortness_of_breath', 'head_ache', 'gender'],dtype=float)
+    res=model.predict(test2)[0]
     
 
     return render(request,'prediction/PredictionResult.html',{'res':Drug[res]})
