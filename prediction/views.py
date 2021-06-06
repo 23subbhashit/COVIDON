@@ -3,8 +3,12 @@ import pickle
 import requests
 from datetime import date
 import pandas as pd
-
+from django.http.response import StreamingHttpResponse
+from prediction.camera import VideoCamera
+a = 0 
 # Create your views here.
+
+
 def main(request):
     data = requests.get("https://covid19.mathdro.id/api/")
     result1 = requests.get("https://coronavirus-19-api.herokuapp.com/countries").json()
@@ -83,4 +87,15 @@ def PredictionResult(request):
 
     return render(request,'prediction/PredictionResult.html',{'res':Drug[res]})
 
+def gen(camera):
+	while True:
+		frame = camera.get_frame()
+		yield (b'--frame\r\n'
+				b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+
+def video_feed(request):
+	return StreamingHttpResponse(gen(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame') 
     
+def index(request):
+	return render(request, 'prediction/home.html')

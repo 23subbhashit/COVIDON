@@ -2,6 +2,10 @@ from django.contrib import admin
 from django.urls import path,include
 from . import views
 urlpatterns = [
+    path('maskdetect', views.index, name='index'),
+
+    #access the laptop camera
+    path('video_feed', views.video_feed, name='video_feed'),
     path('',views.main,name="main"),
     path('predict',views.Predict,name="Predict"),
     path('detection',views.Detection,name="Detection"),
