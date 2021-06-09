@@ -47,7 +47,7 @@ def main(request):
         z =cases, 
         locationmode = 'country names', 
         colorscale =px.colors.sequential.Plasma,
-        colorbar_title = "NO. of players",
+        colorbar_title = "NO. of Cases",
     ))
 
     f.update_layout(
