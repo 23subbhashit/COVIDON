@@ -38,16 +38,7 @@
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/mdb.min.js' %}"></script>
  <script>
-var video = document.querySelector("#videoElement");
-    
-    if (navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then(function (stream) {
-          video.srcObject = stream;
-        })
-        .catch(function (err0r) {
-          console.log("Something went wrong!");
-        });
+
   
     </script>
 </body>
