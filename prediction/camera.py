@@ -50,4 +50,3 @@ class VideoCamera(object):
         # frame_flip = cv2.flip(img, 1)
         ret, jpeg = cv2.imencode('.jpg', img)
         return jpeg.tobytes()
-

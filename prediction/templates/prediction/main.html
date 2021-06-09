@@ -15,8 +15,8 @@
      
      {% comment %} <link rel="icon" type = "image/png" href = "{% static 'images/school.svg' %}"> {% endcomment %}
   
-    <link rel="icon" type = "image/png" href = "{% static 'images/analysis.svg' %}"> 
-    <title>Fraud Detection</title>
+    <link rel="icon" type = "image/png" href = "{% static 'images/coronavirus.svg' %}"> 
+    <title>COVIDON</title>
 </head>
 
 <body >
@@ -34,14 +34,6 @@
 							<div class="stat"><b>13</b>% increase</div>
 						</div>
 					</div>
-					{% comment %} <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-						<div class="card green">
-							<div class="title">Total Recovered</div>
-							<i class="zmdi zmdi-upload"></i>
-							<div class="value">5,990</div>
-							<div class="stat"><b>4</b>% increase</div>
-						</div>
-					</div> {% endcomment %}
 					<div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-4">
 						<div class="card green">
 							<div class="title">Total Recovered</div>
@@ -86,17 +78,17 @@
 								<p>Country</p>
 							</td>
 							<td>
-								<p style="color:blue";>{{cases}}</p>
+								<p style="color:#00FFF2";>{{cases}}</p>
 								{% comment %} <p class="text-danger">Overdue</p> {% endcomment %}
 							</td>
 							<td class="member">
 								
 								<div class="member-info">
-									<p style="color:red";>{{deaths}}</p>
+									<p style="color:#FF0000";>{{deaths}}</p>
 								</div>
 							</td>
 							<td>
-								<p style="color:green";>{{ recovered }}</p>
+								<p style="color:#00FF12";>{{ recovered }}</p>
 								
 							</td>
 							{% if todayDeaths < 300 %} 
