@@ -5,6 +5,11 @@ from datetime import date
 import pandas as pd
 from django.http.response import StreamingHttpResponse
 from prediction.camera import VideoCamera
+import plotly.graph_objects as go
+from plotly.offline import init_notebook_mode,iplot
+import plotly.express as px
+from plotly.offline import plot
+from . import  maps
 a = 0 
 # Create your views here.
 
@@ -14,7 +19,7 @@ def main(request):
     result1 = requests.get("https://coronavirus-19-api.herokuapp.com/countries").json()
     d = dict()
     for i in result1:
-        d[i['country']]=i['todayCases']
+        d[i['country']]=i['cases']
     world = dict(sorted(d.items(), key=lambda item: item[1],reverse=True)[1:51])
 
     country = []
@@ -36,7 +41,22 @@ def main(request):
     
     recovered = result['recovered']['value']
     deaths = result['deaths']['value']
-    return render(request,'prediction/main.html',{'confirmed' : confirmed, 'deaths' : deaths  ,'recovered' :recovered , 'world' : z})
+
+    # plot_div = maps.world_map()
+    f= go.Figure(data=go.Choropleth(
+        locations=country,
+        z =cases, 
+        locationmode = 'country names', 
+        colorscale =px.colors.sequential.Plasma,
+        colorbar_title = "NO. of players",
+    ))
+
+    f.update_layout(
+        title_text = 'Number of Covid Cases From Top 50 Countries',
+    )
+    plot_div = plot(f, include_plotlyjs=False, output_type='div', config={'displayModeBar': False})
+
+    return render(request,'prediction/main.html',{'confirmed' : confirmed, 'deaths' : deaths  ,'recovered' :recovered , 'world' : z,'usa_map': plot_div})
 
 def Predict(request):
     return render(request,'prediction/Predict.html')

@@ -107,15 +107,21 @@
 					</table>
 				</div>
 			</div>
-			<div class="chart-data">
-				<div class="row">
-					{% comment %} <div class="col-12 col-md-4">
-						<div class="chart radar-chart dark">
+				<center>
 							<div class="actions">
-								
+								<div class="plotly worldmap">
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.54.6/plotly.min.js"></script>
+
+          <div class="chart">
+            {% autoescape off %}
+            {{ usa_map }}
+            {% endautoescape %}
+          </div>
+        </div>
 							</div>
-						</div>
-					</div>
+
+					</center>
+					{% comment %}
 					<div class="col-12 col-md-4">
 						<div class="chart bar-chart light">
 							<div class="actions">
@@ -138,6 +144,7 @@
 <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
 <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/plotly.min.js' %}"></script>
 <script src="{% static 'js/all.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/mdb.min.js' %}"></script>
