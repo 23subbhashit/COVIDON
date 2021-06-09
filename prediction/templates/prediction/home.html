@@ -24,7 +24,7 @@
 
     {% include 'prediction/nav.html' %}
 
-		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3">
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3" id="videoElement">
             <center>
            <img src = "{% url 'video_feed' %}">
            </center>
@@ -38,9 +38,16 @@
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/mdb.min.js' %}"></script>
  <script>
-$(window).scroll(function(){
-    $('nav').toggleClass('scrolled', $(this).scrollTop() > 0);
-  });
+var video = document.querySelector("#videoElement");
+    
+    if (navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function (stream) {
+          video.srcObject = stream;
+        })
+        .catch(function (err0r) {
+          console.log("Something went wrong!");
+        });
   
     </script>
 </body>

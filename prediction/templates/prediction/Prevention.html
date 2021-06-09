@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/mdb.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/prevention.css' %}
     
     <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
     
@@ -25,9 +27,7 @@
     {% include 'prediction/nav.html' %}
 
 		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3">
-          <center>
-         <h1 style="color:white">Result : {{ res }}</h1>
-            </center>
+           
 		</main>
 	
   
@@ -38,10 +38,9 @@
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/mdb.min.js' %}"></script>
  <script>
-$(window).scroll(function(){
-    $('nav').toggleClass('scrolled', $(this).scrollTop() > 0);
-  });
-  
+if(window.innerHeight > window.innerWidth){
+   alert("Please use Landscape Mode for actual and better view.\n\nIf you're viewing this from mobile devices, turn on the screen rotation and use landsape mode with FULL SCREEN VIEW.");
+}
     </script>
 </body>
 </html>

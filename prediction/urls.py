@@ -8,7 +8,7 @@ urlpatterns = [
     path('video_feed', views.video_feed, name='video_feed'),
     path('',views.main,name="main"),
     path('predict',views.Predict,name="Predict"),
-    path('detection',views.Detection,name="Detection"),
+    path('prevention',views.Prevention,name="Prevention"),
     path('predictionresult',views.PredictionResult,name="PredictionResult"),
     path('news',views.News,name="News")
     

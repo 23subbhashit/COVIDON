@@ -41,6 +41,9 @@ def main(request):
 def Predict(request):
     return render(request,'prediction/Predict.html')
 
+def Prevention(request):
+    return render(request,'prediction/Prevention.html')
+
 def News(request):
     today = date.today()
     d3 = today.strftime("%y-%m-%d")
@@ -63,8 +66,7 @@ def News(request):
     z = zip(description,title,url,publishedAt)
     return render(request,'prediction/News.html',{'world' : z})
 
-def Detection(request):
-    return render(request,'prediction/Detection.html')
+
 
 def PredictionResult(request):
     pkl_path = "Symptom.pkl"
