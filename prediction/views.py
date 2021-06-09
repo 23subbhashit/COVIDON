@@ -9,7 +9,6 @@ import plotly.graph_objects as go
 from plotly.offline import init_notebook_mode,iplot
 import plotly.express as px
 from plotly.offline import plot
-from . import  maps
 a = 0 
 # Create your views here.
 
