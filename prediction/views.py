@@ -38,10 +38,13 @@ def main(request):
     result = data.json()
     confirmed = result['confirmed']['value']
     
-    recovered = result['recovered']['value']
-    deaths = result['deaths']['value']
+    recovered1 = result['recovered']['value']
+    deaths1 = result['deaths']['value']
 
-    # plot_div = maps.world_map()
+    score = (( recovered1 )/confirmed)*100
+    score1 = (( deaths1 )/confirmed)*100
+
+    
     f= go.Figure(data=go.Choropleth(
         locations=country,
         z =cases, 
@@ -55,7 +58,7 @@ def main(request):
     )
     plot_div = plot(f, include_plotlyjs=False, output_type='div', config={'displayModeBar': False})
 
-    return render(request,'prediction/main.html',{'confirmed' : confirmed, 'deaths' : deaths  ,'recovered' :recovered , 'world' : z,'usa_map': plot_div})
+    return render(request,'prediction/main.html',{'confirmed' : confirmed, 'deaths' : deaths1  ,'recovered' :recovered1 , 'world' : z,'usa_map': plot_div, 'score':score , 'score1': score1})
 
 def Predict(request):
     return render(request,'prediction/Predict.html')

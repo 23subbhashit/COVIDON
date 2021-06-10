@@ -26,7 +26,15 @@
 
 		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3">
           <center>
-         <h1 style="color:white">Result : {{ res }}</h1>
+         <h1 style="color:white">Result</h1>
+          <br/>
+          <br/>
+         {% if res == 'Positive' %}
+         <h1 style="color:red;font-size:69px;">{{ res }}</h1>
+          
+         {% else %}
+          <h1 style="color:green;font-size:69px;">{{ res }}</h1>
+         {% endif %}
             </center>
 		</main>
 	
