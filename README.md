@@ -1,2 +1,2 @@
-# FraudDetection
-A website for detecting fraud covid medicines
+# Covid Awareness website
+A website for spreading awareness about covid 19.
