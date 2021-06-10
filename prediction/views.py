@@ -120,3 +120,41 @@ def video_feed(request):
     
 def index(request):
 	return render(request, 'prediction/home.html')
+
+def vaccine(request):
+    data=pd.read_csv("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/locations.csv")
+    data['vaccines'] = data['vaccines'].apply(lambda x : x.split(','))
+    location = data['location']
+    iso_code= data['iso_code']
+    last_observation_date = data['last_observation_date']
+    source_name = data['source_name']
+    vaccines = data['vaccines']
+    
+    z = zip(location,iso_code,last_observation_date,source_name,vaccines)
+
+    data1=pd.read_csv("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations.csv")
+    data1.dropna(inplace=True)
+    data1.drop_duplicates(subset ="location",keep = "last", inplace = True)
+        
+    location1 = data1['location']
+    people_fully_vaccinated= data1['people_fully_vaccinated']
+
+    
+    f= go.Figure(data=go.Choropleth(
+        locations=location1,
+        z =people_fully_vaccinated, 
+        locationmode = 'country names', 
+        colorscale =px.colors.sequential.Plasma,
+        colorbar_title = "NO. of people vaccinated",
+    ))
+
+    f.update_layout(
+        title_text = 'NO. of people vaccinated throughout the world',
+    )
+    plot_div = plot(f, include_plotlyjs=False, output_type='div', config={'displayModeBar': False})
+
+    return render(request,'prediction/VaccinationDetails.html',{ 
+    'world' : z,
+    'usa_map': plot_div
+    })
+	

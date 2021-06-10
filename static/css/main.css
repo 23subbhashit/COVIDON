@@ -90,6 +90,9 @@ figure {
 .card.blue {
   background-color: #2298F1;
 }
+.card .lblue {
+  background-color: #add8e6;
+}
 .card.green {
   background-color: #66B92E;
 }

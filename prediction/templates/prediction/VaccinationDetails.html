@@ -24,83 +24,53 @@
     {% include 'prediction/nav.html' %}
 
 		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3">
-			<div class="card-list">
-				<div class="row">
-					<div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-4">
-						<div class="card blue">
-							<div class="title">Total Cases</div>
-							<i class="zmdi zmdi-upload"></i>
-							<div class="value">{{ confirmed }}</div>
-							<div class="stat"><b>13</b>% increase</div>
-						</div>
-					</div>
-					<div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-4">
-						<div class="card green">
-							<div class="title">Total Recovered</div>
-							<i class="zmdi zmdi-download"></i>
-							<div class="value">{{ recovered }}</div>
-							<div class="stat"><b>13</b>% decrease</div>
-						</div>
-					</div>
-					<div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-4">
-						<div class="card red">
-							<div class="title">Total Deaths</div>
-							<i class="zmdi zmdi-download"></i>
-							<div class="value">{{ deaths }}</div>
-							<div class="stat"><b>13</b>% decrease</div>
-						</div>
-					</div>
-				</div>
-			</div>
 			
 			<div class="projects mb-4">
 				<div class="projects-inner">
 					<header class="projects-header">
-						<div class="title">Covid Situation</div>
-						<div class="count">| Top 50 Countries</div>
+						<div class="title">Vaccination Details</div>
+						<div class="count">| All Countries</div>
 						<i class="zmdi zmdi-download"></i>
 					</header>
 					<table class="projects-table">
 						<thead>
 							<tr>
 								<th>Countries</th>
-								<th>Cases</th>
-								<th>Deaths</th>
-								<th>Recovered</th>
-								<th>Status</th>
+								<th>Iso Code</th>
+								<th>Last Observation</th>
+								<th>Source</th>
+								<th>Vaccines available</th>
 							</tr>
 						</thead>
-						{% for country,cases,deaths,recovered,todayDeaths in world %} 
+						{% for location,iso_code,last_observation_date,source_name,vaccines in world %} 
 							<tr>
 							<td>
 							
-								<p>{{ country }}</p>
+								<p>{{ location }}</p>
 								<p>Country</p>
 							</td>
 							<td>
-								<p style="color:#00FFF2";>{{cases}}</p>
+								<p style="color:#00FFF2";>{{iso_code}}</p>
 								{% comment %} <p class="text-danger">Overdue</p> {% endcomment %}
 							</td>
 							<td class="member">
 								
 								<div class="member-info">
-									<p style="color:#FF0000";>{{deaths}}</p>
+									<p style="color:#FF0000";>{{ last_observation_date }}</p>
 								</div>
 							</td>
 							<td>
-								<p style="color:#00FF12";>{{ recovered }}</p>
-								
+              
+								<p style="color:#00FF12";>{{ source_name }}</p>
+							
 							</td>
-							{% if todayDeaths < 300 %} 
-							<td class="status">
-								<span class="status-text status-blue">Safe</span>
+							
+							<td>
+                {% for i in vaccines %}
+								<span class="status-text status-blue">{{ i }}</span><br/>
+                {% endfor %}
 							</td> 
-							{% else %}
-							<td class="status">
-								<span class="status-text status-red">Danger</span>
-							</td>
-
-							{% endif %}
+							
 							
 						</tr>
    						{% endfor %}
@@ -110,8 +80,8 @@
 				<center>
 							<div class="actions">
 								<div class="plotly worldmap">
+          
           <script src="{% static 'js/plotly.min.js' %}"></script>
-
           <div class="chart">
             {% autoescape off %}
             {{ usa_map }}
