@@ -27,7 +27,8 @@
 
 		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3">
           {% comment %} <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> {% endcomment %}
-            <form action="{% url 'PredictionResult' %}" class="form" style="margin-top:250px;">
+          <div class="row">
+            <form id="form1 col col-lg-10 col-md-10 col-sm-3" action="{% url 'PredictionResult' %}" class="form" style="margin-top:250px;">
             {% csrf_token %}
             <h1>Covid Prediction</h1>
             <h4>Based on symptoms</h4> 
@@ -47,6 +48,7 @@
             <input type="submit" value="Submit">
             <input type="reset" value="Reset">
 </form>
+</div>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     {% comment %} {% include 'prediction/footer.html' %} {% endcomment %}
 		</main>

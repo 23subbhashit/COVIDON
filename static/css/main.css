@@ -238,6 +238,9 @@ figure {
   margin: 20px 0;
   width: 100%;
 }
+@media (max-width: 500px) {
+  /* Add chart css */
+}
 .chart .actions {
   margin: 15px;
   position: absolute;

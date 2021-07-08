@@ -8,11 +8,13 @@
     <span style="font-size:20px;font-style: oblique;"> COVIDON </span>
     <img src="{% static 'images/coronavirus.svg' %}" style="width:60px;height:25px"/>
     </a>
+	<div id="temp"></div>
 </nav>
 
 
 <div class="container-fluid ">
 	<div class="row">
+		
 		<nav class="col-md-2 d-none d-md-block sidebar">
 			<div class="sidebar-sticky">
 				<ul class="nav flex-column">
@@ -84,3 +86,48 @@
 				
 			</div>
 		</nav>
+		<style>
+			#temp{
+				background-color: #1b2431;
+
+			}
+			#tlink>ul>li>a {
+				text-decoration: none;
+				color: white;
+			}
+			@media (min-width: 768px) {
+				#nv{
+					display: none;
+				}
+			}
+		</style>
+		<script>
+			function myFunction(x) {
+			document.getElementById("temp").style.display="show";
+			document.getElementById("temp").innerHTML=`<div class='pos-f-t'>
+				<div class='collapse' id='navbarToggleExternalContent'>
+					<div class='p-4' id='p4'><h4 class='text-white' id='tlink'></h4>
+						<span class='text-muted'></span></div>
+						</div>
+						<nav id='nv' class='navbar navbar-dark'>
+							<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarToggleExternalContent' aria-controls='navbarToggleExternalContent' aria-expanded='false' aria-label='Toggle navigation'>
+								<span class='navbar-toggler-icon'></span></button></nav></div>`;
+  			var s=`<ul class="nav flex-column"> 
+					<li class="nav-item"><a class="nav-link" href="{% url 'main' %}"><i class="fas fa-tachometer-alt " style="font-size:20px;"></i><span style="font-size:20px;"> Dashboard</span></a></li> 
+					<li class="nav-item"><a class="nav-link" href="{% url 'Prevention' %}"><i class="fas fa-virus" style="font-size:20px;"></i><span style="font-size:20px;">About Corona</span></a></li> 
+					<li class="nav-item"><a class="nav-link" href="{% url 'Predict' %}"><i class="fas fa-poll" style="font-size:20px;"></i><span style="font-size:20px;"> Predict Covid </span></a></li> 
+					<li class="nav-item"><a class="nav-link" href="{% url 'News' %}"><i class="fas fa-newspaper" style="font-size:20px;"></i><span style="font-size:20px;"> News </span></a></li> 
+					<li class="nav-item"><a class="nav-link" href="{% url 'index' %}"><i class="fas fa-head-side-mask" style="font-size:20px;"></i><span style="font-size:20px;"> Mask Detect </span></a></li> 
+					<li class="nav-item"><a class="nav-link" href="{% url 'Vaccine' %}"><i class="fas fa-chart-line" style="font-size:20px;"></i><span style="font-size:20px;"> Vaccine Details </span></a></li></ul>`;
+					document.getElementById('tlink').innerHTML=s;
+			}
+			
+			var x = window.matchMedia("(max-width: 700px)")
+			myFunction(x) 
+			x.addListener(myFunction) 
+			</script>
+			
+
+
+
+			
