@@ -25,13 +25,18 @@ def main(request):
     deaths = []
     recovered =[]
     todayDeaths = []
+    cases1 = []
 
     for i in result1:
         if i['country'] in world.keys():
             country.append(i['country'])
-            cases.append(i['cases'])
-            deaths.append(i['deaths'])
-            recovered.append(i['recovered'])
+            cases.append("{:,.2f}".format(i['cases'])[:-3])
+            cases1.append(i['cases'])
+            deaths.append("{:,.2f}".format(i['deaths'])[:-3])
+            if i['recovered'] == None:
+                recovered.append(0)
+            else:
+                recovered.append("{:,.2f}".format(i['recovered'])[:-3])
             todayDeaths.append(i['todayDeaths'])
     z = zip(country,cases,deaths,recovered,todayDeaths)
     result = data.json()
@@ -42,11 +47,14 @@ def main(request):
 
     score = (( recovered1 )/confirmed)*100
     score1 = (( deaths1 )/confirmed)*100
+    confirmed = "{:,.2f}".format(confirmed)[:-3]
+    recovered1  = "{:,.2f}".format(recovered1)[:-3]
+    deaths1 = "{:,.2f}".format(deaths1)[:-3]
 
     
     f= go.Figure(data=go.Choropleth(
         locations=country,
-        z =cases, 
+        z =cases1, 
         locationmode = 'country names', 
         colorscale =px.colors.sequential.Plasma,
         colorbar_title = "NO. of Cases",
